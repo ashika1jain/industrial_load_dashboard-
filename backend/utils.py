@@ -1,6 +1,40 @@
 import pandas as pd
 import numpy as np
 
+# Maximum allowed rows in uploaded CSV
+MAX_ROWS = 10000
+# Minimum required rows for lag features
+MIN_ROWS = 168
+
+def validate_csv(df):
+    """
+    Strictly validates the uploaded CSV.
+    - Checks required columns
+    - Checks minimum and maximum rows
+    - Checks data types
+    """
+    # Check required columns
+    required_columns = {"datetime", "load_kw"}
+    if not required_columns.issubset(df.columns):
+        raise ValueError("CSV must have 'datetime' and 'load_kw' columns only")
+
+    # Reject unexpected extra columns
+    if len(df.columns) > 2:
+        raise ValueError("CSV must have exactly 2 columns: 'datetime' and 'load_kw'")
+
+    # Check minimum rows
+    if len(df) < MIN_ROWS:
+        raise ValueError(f"Please upload at least {MIN_ROWS} rows (1 week) of data")
+
+    # Check maximum rows
+    if len(df) > MAX_ROWS:
+        raise ValueError(f"CSV too large. Maximum allowed rows: {MAX_ROWS}")
+
+    # Check load_kw is numeric
+    if not pd.api.types.is_numeric_dtype(df["load_kw"]):
+        raise ValueError("'load_kw' column must contain numeric values only")
+
+
 def clean_data(df):
     """
     Cleans the uploaded CSV data.
