@@ -1,6 +1,5 @@
 'use client'
-
-import { useState } from 'react'
+import { useUser } from '@clerk/nextjs' 
 import { Zap, TrendingUp, Activity, AlertTriangle } from 'lucide-react'
 import { TopNav } from '@/components/top-nav'
 import { KPICard } from '@/components/kpi-card'
@@ -12,6 +11,8 @@ import { AlertPanel } from '@/components/alert-panel'
 import { ForecastSection } from '@/components/forecast-section'
 import { RecentPredictionsTable } from '@/components/recent-predictions-table'
 import { runPrediction, PredictionResponse } from '@/lib/api'
+import { getUserSettings } from '@/lib/api' 
+import { useState, useEffect } from 'react'
 
 export default function Dashboard() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -19,12 +20,26 @@ export default function Dashboard() {
   const [predictionData, setPredictionData] = useState<PredictionResponse | null>(null)
   const [uploadStatus, setUploadStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const { user } = useUser()
+  const userId = user?.id || "anonymous"
+  const [contractDemand, setContractDemand] = useState<number>(500)
+
+  useEffect(() => {
+    if (userId !== "anonymous") {
+      getUserSettings(userId).then(data => {
+        if (data?.contract_demand && data.contract_demand > 0) {
+          setContractDemand(data.contract_demand)
+        }
+      })
+    }
+  }, [userId])
 
   const handleFileSelect = (file: File) => {
     setSelectedFile(file)
     setUploadStatus('success')
     setErrorMessage(null)
   }
+
 
   const handleRunPrediction = async (contractDemand: number) => {
     if (!selectedFile) {
@@ -36,7 +51,7 @@ export default function Dashboard() {
     setErrorMessage(null)
 
     try {
-      const result = await runPrediction(selectedFile, contractDemand)
+      const result = await runPrediction(selectedFile, contractDemand , userId)
       setPredictionData(result)
       setUploadStatus('success')
     } catch (error: any) {
@@ -110,6 +125,7 @@ export default function Dashboard() {
           <DemandControlPanel
             onRunPrediction={handleRunPrediction}
             isLoading={isLoading}
+            defaultDemand={contractDemand}
           />
         </div>
 
