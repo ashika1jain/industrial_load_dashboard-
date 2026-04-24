@@ -1,19 +1,24 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Zap, Loader2 } from 'lucide-react'
 
+
 interface DemandControlPanelProps {
   onRunPrediction: (contractDemand: number) => void
   isLoading: boolean
+  defaultDemand?: number
 }
 
-export function DemandControlPanel({ onRunPrediction, isLoading }: DemandControlPanelProps) {
-  const [demand, setDemand] = useState('500')
+export function DemandControlPanel({ onRunPrediction, isLoading , defaultDemand = 500 }: DemandControlPanelProps) {
+  const [demand, setDemand] = useState(String(defaultDemand))
+  useEffect(() => {
+    setDemand(String(defaultDemand))
+  }, [defaultDemand])
 
   const handleRun = () => {
     const value = parseFloat(demand)
