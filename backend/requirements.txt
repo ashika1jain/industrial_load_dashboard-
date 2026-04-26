@@ -9,3 +9,4 @@ pydantic
 slowapi
 python-dotenv
 psycopg2-binary
+httpx
