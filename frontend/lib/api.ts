@@ -43,7 +43,7 @@ export interface RecentPrediction {
 }
 
 export async function getRecentPredictions(userId: string = "anonymous"): Promise<RecentPrediction[]> {
-  const response = await fetch(${API_URL}/predictions?user_id=${userId})
+  const response = await fetch(`${API_URL}/predictions?user_id=${userId}`)
   if (!response.ok) return []
   return response.json()
 }
@@ -58,7 +58,7 @@ export interface UserSettings {
 
 export async function getUserSettings(userId: string): Promise<UserSettings> {
   try {
-    const response = await fetch(${API_URL}/settings?user_id=${userId})
+    const response = await fetch(`${API_URL}/settings?user_id=${userId}`)
     if (!response.ok) return {}
     return response.json()
   } catch {
@@ -75,7 +75,7 @@ export async function saveUserSettings(userId: string, settings: UserSettings): 
     formData.append("industry_type", settings.industry_type || "")
     formData.append("location", settings.location || "")
 
-    const response = await fetch(${API_URL}/settings, {
+    const response = await fetch(`${API_URL}/settings`, {
       method: "POST",
       body: formData,
     })
