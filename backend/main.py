@@ -51,9 +51,9 @@ app.add_middleware(
 # ─────────────────────────────────────────
 # Load ML model at startup
 # ─────────────────────────────────────────
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODEL_PATH = os.path.join(BASE_DIR, "ml_model", "load_prediction_model.pkl")
-FEATURES_PATH = os.path.join(BASE_DIR, "ml_model", "model_features.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "..", "ml_model", "load_prediction_model.pkl")
+FEATURES_PATH = os.path.join(BASE_DIR, "..", "ml_model", "model_features.pkl")
 
 model, features = load_model(MODEL_PATH, FEATURES_PATH)
 
