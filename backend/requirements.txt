@@ -8,4 +8,4 @@ python-multipart
 pydantic
 slowapi
 python-dotenv
-psycopg-binary
+psycopg2-binary
