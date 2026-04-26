@@ -21,7 +21,7 @@ export async function runPrediction(
   formData.append("contract_demand", contractDemand.toString());
   formData.append("user_id", userId)
 
-  const response = await fetch(${API_URL}/predict, {
+  const response = await fetch(`${API_URL}/predict`, {
     method: "POST",
     body: formData,
   });
