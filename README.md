@@ -168,10 +168,6 @@ datetime,load_kw
 
 ---
 
-## Team
-
-- **Ashika Jain** — Backend, Database, Deployment
-- **Aryan Kshetri** — Frontend, ML Model, Integration
-
+## Academic Context 
 **Medicaps University, Indore**  
 B.Tech Computer Science & Engineering — Minor Project 2026
