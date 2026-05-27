@@ -15,7 +15,7 @@ Factories operating under contracted demand agreements face financial penalties 
 
 ---
 
-## Solution
+## The Solution
 
 This system accepts historical hourly load data (CSV upload), applies a trained Machine Learning model to generate next-day and next-week forecasts, and displays a real-time **Safe** or **Risk** alert based on whether the predicted load is likely to exceed the user-defined contract demand limit.
 
