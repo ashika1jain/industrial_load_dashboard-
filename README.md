@@ -58,6 +58,11 @@ This system accepts historical hourly load data (CSV upload), applies a trained 
 ### Factory Settings
 ![Settings](assets/screenshots/settings-industrial-load.jpeg)
 
+## Cloud Database
+
+### Neon PostgreSQL Database
+![Neon Database](assets/screenshots/neon-db.jpeg)
+
 ---
 
 ## Tech Stack
