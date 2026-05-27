@@ -1,5 +1,7 @@
 # Industrial Load Forecasting & Contract Demand Alert System
 
+![Dashboard Preview](assets/screenshots/after-prediction.jpeg)
+
 A full-stack web application that predicts factory electricity load and alerts operators before contract demand violations occur — helping industries avoid penalty charges.
 
 ## Live Demo
