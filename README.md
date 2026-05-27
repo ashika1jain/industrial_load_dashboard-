@@ -61,7 +61,7 @@ This system accepts historical hourly load data (CSV upload), applies a trained 
 ## Cloud Database
 
 ### Neon PostgreSQL Database
-![Neon Database](assets/screenshots/neon-db.jpeg)
+![Neon Database](assets/screenshots/neon-db.png)
 
 ---
 
