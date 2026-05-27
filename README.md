@@ -35,6 +35,31 @@ This system accepts historical hourly load data (CSV upload), applies a trained 
 
 ---
 
+## Screenshots
+
+### Authentication Page
+![Authentication](assets/screenshots/auth-industrial-load.jpeg)
+
+### Main Dashboard
+![Dashboard](assets/screenshots/after-prediction.jpeg)
+
+### Prediction Analytics
+![Prediction Analytics](assets/screenshots/after-prediction(2).jpeg)
+
+### Load Forecast Visualization
+![Forecast](assets/screenshots/after-prediction(3).jpeg)
+
+### Contract Demand Risk Alert
+![Risk Alert](assets/screenshots/after-prediction(4).jpeg)
+
+### Previous Predictions History
+![Previous Predictions](assets/screenshots/prev-predictions.jpeg)
+
+### Factory Settings
+![Settings](assets/screenshots/settings-industrial-load.jpeg)
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
